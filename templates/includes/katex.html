@@ -1,0 +1,27 @@
+{% if config.extra.server_side_katex %}
+    <link rel="stylesheet" href="{{ get_url(path = 'katex.min.css') | safe }}">
+{% else %}
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" as="style" onload="this.rel='stylesheet';">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script>
+    window.addEventListener("DOMContentLoaded",()=>{
+        document.querySelectorAll('code').forEach(e=>{
+            let t = e.innerText
+            if(t.startsWith('$')&&t.endsWith('$')){
+                let s = document.createElement('span');
+                katex.render(t.slice(1,-1),s);
+                e.parentNode.replaceChild(s,e);
+            }
+        });
+        document.querySelectorAll('pre.z-code code span.z-text.z-plain').forEach(e=>{
+            let t = e.innerText.trim();
+            if(t.startsWith('$$')&&t.endsWith('$$')){
+                let c = e.parentNode.parentNode;
+                let p = document.createElement('p');
+                katex.render(t.slice(2,-2),p,{displayMode:true});
+                c.parentNode.replaceChild(p,c);
+            }
+        });
+    });
+    </script>
+{% endif %}

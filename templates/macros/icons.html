@@ -1,0 +1,15 @@
+{%- macro icon(name) -%}
+{%- if name == 'code' -%}
+    {%- include 'includes/icons/code.html' -%}
+{%- elif name == 'paper' -%}
+    {%- include 'includes/icons/paper.html' -%}
+{%- elif name == 'pdf' -%}
+    {%- include 'includes/icons/pdf.html' -%}
+{%- elif name == 'poster' -%}
+    {%- include 'includes/icons/poster.html' -%}
+{%- elif name == 'slides' -%}
+    {%- include 'includes/icons/slides.html' -%}
+{%- elif name == 'video' -%}
+    {%- include 'includes/icons/video.html' -%}
+{%- endif -%}
+{%- endmacro -%}

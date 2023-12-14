@@ -1,0 +1,35 @@
+.z-code { color: #334; }
+.z-comment { color: #99a; }
+.z-variable.z-parameter.z-function { color: #334; }
+.z-keyword { color: #a2a; }
+.z-variable { color: #d54; }
+.z-entity.z-name.z-function, .z-meta.z-require, .z-support.z-function.z-any-method { color: #08b; }
+.z-support.z-class, .z-entity.z-name.z-class, .z-entity.z-name.z-type.z-class { color: #b80; }
+.z-meta.z-class { color: #b80; }
+.z-keyword.z-other.z-special-method { color: #08b; }
+.z-storage { color: #a2a; }
+.z-support.z-function { color: #08b; }
+.z-string { color: #595; }
+.z-constant.z-numeric { color: #b80; }
+.z-none { color: #b80; }
+.z-none { color: #b80; }
+.z-constant { color: #b80; }
+.z-entity.z-name.z-tag { color: #d54; }
+.z-entity.z-other.z-attribute-name { color: #b80; }
+.z-entity.z-other.z-attribute-name.z-id, .z-punctuation.z-definition.z-entity { color: #b80; }
+.z-meta.z-selector { color: #a2a; }
+.z-markup.z-heading .z-punctuation.z-definition.z-heading, .z-entity.z-name.z-section { color: #08b; }
+.z-markup.z-bold, .z-punctuation.z-definition.z-bold { color: #a2a; }
+.z-markup.z-italic, .z-punctuation.z-definition.z-italic { color: #a2a; }
+.z-markup.z-raw.z-inline { color: #595; }
+.z-meta.z-link { color: #595; }
+.z-markup.z-quote { color: #595; }
+.z-markup.z-inserted { color: #9b7; }
+.z-markup.z-deleted { color: #d67; }
+.z-markup.z-changed { color: #db7; }
+.z-string.z-regexp { color: #595; }
+.z-constant.z-character.z-escape { color: #19b; }
+.z-invalid.z-illegal { color: #fff; background-color: #d67; }
+.z-invalid.z-broken { color: #fff; background-color: #db7; }
+.z-invalid.z-deprecated { color: #fff; background-color: #db7; }
+.z-invalid.z-unimplemented { color: #fff; background-color: #c7d; }

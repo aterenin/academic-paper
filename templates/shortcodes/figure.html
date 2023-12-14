@@ -1,0 +1,31 @@
+{% set this = page | default(value = section) %}
+<figure>
+{% if src | length > 1 %}
+    <div>
+{% endif %}
+{% for item in src %}
+    {% if src | length > 1 %}
+        <figure>
+    {% endif %}
+    {% if item is ending_with('.mp4') %}
+        <video {% if dark_invert[loop.index0] %}class="dark-invert" {% endif %}{{ source_attributes[loop.index0] | default(value='controls') }}>
+        <source src="{{ this.path ~ item | safe }}" type="video/mp4">
+        </video>
+    {% else %}
+        <img {% if dark_invert[loop.index0] %}class="dark-invert" {% endif %}alt="{{ alt[loop.index0] }}" src="{{ this.path ~ item | safe }}" loading="lazy">
+    {% endif %}
+    {% if subcaption %}
+        <figcaption>{{ subcaption[loop.index0] | markdown(inline = true) | safe }}</figcaption>
+    {% endif %}
+    {% if src | length > 1 %}
+        </figure>
+    {% endif %}
+{% endfor %}
+{% if src | length > 1 %}
+    </div>
+{% endif %}
+
+{% if body %}
+    <figcaption>{{ body | markdown(inline = true) | safe }}</figcaption>
+{% endif %}
+</figure>

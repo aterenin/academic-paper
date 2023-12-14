@@ -1,0 +1,15 @@
+base_url = "https://aterenin.github.io/academic-paper"
+compile_sass = true
+build_search_index = false
+generate_feed = false
+minify_html = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "css"
+smart_punctuation = true
+
+[extra]
+favicon = false
+large_card = true
+footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)."

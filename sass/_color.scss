@@ -1,0 +1,39 @@
+:root {
+    color-scheme: light dark;
+    --color-text: #{$color-text};
+    --color-primary: #{$color-primary};
+    --color-light: #{$color-light};
+    --color-white: #{$color-white};
+    --color-black: #{$color-black};
+    --color-btn: #{$color-btn};
+    --color-border: #{$color-border};
+    @if $color-selection { --color-selection: #{$color-selection}; }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @if $color-text-dark { --color-text: #{$color-text-dark}; }
+        @if $color-primary-dark { --color-primary: #{$color-primary-dark}; }
+        @if $color-light-dark { --color-light: #{$color-light-dark}; }
+        @if $color-white-dark { --color-white: #{$color-white-dark}; }
+        @if $color-black-dark { --color-black: #{$color-black-dark}; }
+        @if $color-btn-dark { --color-btn: #{$color-btn-dark}; }
+        @if $color-border-dark { --color-border: #{$color-border-dark}; }
+        @if $color-selection-dark { --color-selection: #{$color-selection-dark}; }
+    }
+    .dark-invert, pre.z-code code {
+        filter: invert(90%) hue-rotate(180deg) sepia(10%);
+    }
+    img:not(.dark-invert) {
+        filter: brightness(80%);
+    }
+}
+
+@if $color-selection {
+    ::selection {
+        background: var(--color-selection);
+    }
+    ::-moz-selection {
+        background: var(--color-selection);
+    }
+}

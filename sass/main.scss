@@ -1,0 +1,27 @@
+$responsive-cutoff: 768px !default;
+
+$color-text: #212529 !default;
+$color-primary: #007bff !default;
+$color-light: #f8f9fa !default;
+$color-white: #fff !default;
+$color-black: #000 !default;
+$color-btn: #343a40 !default;
+$color-border: #dee2e6 !default;
+$color-selection: #dee2e6 !default;
+
+$color-text-dark: #d1cdc7 !default;
+$color-primary-dark: #33a3ff !default;
+$color-light-dark: #1b1e1f !default;
+$color-white-dark: #181a1b !default;
+$color-black-dark: #e7e5e4 !default;
+$color-btn-dark: #cbc5bf !default;
+$color-border-dark: false !default;
+$color-selection-dark: false !default;
+
+@import "_reset.scss";
+@import "_color.scss";
+@import "_layout.scss";
+@import "_buttons.scss";
+@import "_figures.scss";
+@import "_footnotes.scss";
+@import "_highlight.scss";

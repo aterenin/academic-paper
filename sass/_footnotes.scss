@@ -1,0 +1,15 @@
+.content .footnote-definition {
+    display: flex;
+    > sup {
+        margin-left: 1rem;
+        margin-right: 0.5rem;
+        vertical-align: baseline;
+        font-size: inherit;
+    }
+    > sup:after {
+        content: ".";
+    }
+    p {
+        text-align: left;
+    }
+}
