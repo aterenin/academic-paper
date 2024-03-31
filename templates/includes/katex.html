@@ -1,8 +1,8 @@
-{% if config.extra.server_side_katex %}
+{% if config.extra.server_side_katex and get_env(name="GITHUB_ACTIONS", default="false") == "true" %}
     <link rel="stylesheet" href="{{ get_url(path = 'katex.min.css') | safe }}">
 {% else %}
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" as="style" onload="this.rel='stylesheet';">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" as="style" onload="this.rel='stylesheet';">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
     <script>
     window.addEventListener("DOMContentLoaded",()=>{
         document.querySelectorAll('code').forEach(e=>{

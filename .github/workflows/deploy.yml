@@ -24,11 +24,28 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Download Zola
-        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.17.2/zola-v0.17.2-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
+        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.18.0/zola-v0.18.0-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
       - name: Verify Zola binary
-        run: echo "b62c19a1e104a0526a48a1f29c05ba90b9a14fe7a17ef6a7978d9610886cc783  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
+        run: echo "3530d2626c3adcdc5cfcbfab0b736751269acd6f5352eaf60c3e105d939c8e74  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
       - name: Build website
         run: zola build
+      - name: Check for server side KaTeX
+        run: grep -c "server_side_katex\s*=\s*true" config.toml | sed s/1/SERVER_SIDE_KATEX=true/ >> $GITHUB_ENV
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
+      - name: Install KaTeX
+        run: npm install katex
+        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
+      - name: Find KaTeX script directory
+        run: if [ -d scripts ]; then echo "KATEX_SCRIPT_DIR=scripts"; else echo "KATEX_SCRIPT_DIR=themes/academic-paper/scripts"; fi >> $GITHUB_ENV
+        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
+      - name: Render KaTeX
+        run: node $KATEX_SCRIPT_DIR/katex.js
+        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
+      - name: Copy KaTeX CSS and fonts
+        run: cp node_modules/katex/dist/katex.min.css public; cp -r node_modules/katex/dist/fonts public/fonts
+        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:

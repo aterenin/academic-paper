@@ -2,7 +2,7 @@ name = "Academic Paper"
 description = "A Zola theme for a blog-post-style website to facilitate scientific communication of your academic paper"
 license = "MIT"
 homepage = "https://github.com/aterenin/academic-paper"
-min_version = "0.4.0"
+min_version = "0.18.0"
 demo = "https://aterenin.github.io/academic-paper"
 
 [extra]

@@ -38,6 +38,7 @@ highlight_theme = "css" # this theme includes its own CSS-based styling of highl
 
 [extra]
 footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)." # by default this page adds a small and non-intrusive footer with some text linking to this repository - you can set this to false to remove the footer if you prefer
+server_side_katex = false # set to true to enable server-side KaTeX rendering via scripts/katex.js, this will also include KaTeX CSS and fonts in the build
 ```
 
 ## Page and section configuration 
