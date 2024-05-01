@@ -11,6 +11,7 @@
 <link rel="canonical" href="{{ url | safe }}">
 <meta property="og:url" content="{{ url | safe }}">
 <meta property="og:image" content="{{ card | safe }}">
+<meta property="og:image:type" content="image/png">
 <meta property="og:type" content="article">
 {% if page.extra.venue.date or page.date %}
     <meta property="article:published_time" content="{{ page.extra.venue.date | default(value = page.date) | date(format='%+') }}">

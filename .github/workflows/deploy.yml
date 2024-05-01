@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
       - name: Build website
         run: zola build
       - name: Check for server side KaTeX
-        run: grep -c "server_side_katex\s*=\s*true" config.toml | sed s/1/SERVER_SIDE_KATEX=true/ >> $GITHUB_ENV
+        run: grep -c "server_side_katex\s*=\s*true" config.toml | sed s/1/SERVER_SIDE_KATEX=true/ | sed s/0/SERVER_SIDE_KATEX=false/ >> $GITHUB_ENV
       - name: Setup Node
         uses: actions/setup-node@v4
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
