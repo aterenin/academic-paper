@@ -13,13 +13,13 @@
                 e.parentNode.replaceChild(s,e);
             }
         });
-        document.querySelectorAll('pre.z-code code span.z-text.z-plain').forEach(e=>{
-            let t = e.innerText.trim();
-            if(t.startsWith('$$')&&t.endsWith('$$')){
-                let c = e.parentNode.parentNode;
+        document.querySelectorAll('pre.z-code code:not([class])').forEach(e=>{
+            if(e.firstChild.innerText.trim().startsWith('$$')&&e.lastChild.innerText.trim().startsWith('$$')){
+                let t = Array.from(e.childNodes).slice(1,e.childElementCount-1).map(n=>n.innerText).join(' ');
+                let z = e.parentNode;
                 let p = document.createElement('p');
-                katex.render(t.slice(2,-2),p,{displayMode:true});
-                c.parentNode.replaceChild(p,c);
+                katex.render(t,p,{displayMode:true});
+                z.parentNode.replaceChild(p,z);
             }
         });
     });
