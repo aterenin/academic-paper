@@ -16,10 +16,6 @@ a:hover {
     color: color-mix(in srgb, var(--color-primary), var(--color-black) 15%);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
-
 h1 {
     font-size: $h1-font-size;
 }
@@ -37,6 +33,12 @@ h5 {
 }
 h6 {
     font-size: $h6-font-size;
+}
+h1, h2, h3, h4 {
+    font-weight: 300;
+}
+h4, h5 {
+    font-weight: 400;
 }
 
 small {
