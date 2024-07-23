@@ -1,5 +1,5 @@
 {% macro seo(page) %}
-{% set url = get_url(path = page.path) %}
+{% set url = get_url(path = page.path, trailing_slash = true) %}
 {% set card_file = page.extra.card | default(value = 'card.png') %}
 {% set card = get_url(path = page.path ~ card_file) %}
 <meta property="og:title" content="{{ page.title }}">
