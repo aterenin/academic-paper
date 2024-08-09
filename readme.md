@@ -11,7 +11,7 @@ A demo website built with Academic Paper can be found at [aterenin.github.io/aca
 * Syntax highlighting and math rendering via KaTeX which can be done both client-side and server-side with appropriate configuration.
 * Figures via a Zola shortcode `figure(alt=['Image alt text'],src=['path/to/image.png'])`, which supports captions, subfigures, subcaptions, and is rendered using responsive flexbox.
 * Markdown footnotes via Zola's footnote support.
-* Metadata including Twitter Summary Card, OpenGrapd, and JSON-LD, implemented similar to [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag): these ensure pages are search-engine-fiendly and provide social media websites with links which are displayed when links are shared,
+* Metadata including Twitter Summary Card, OpenGraph, and JSON-LD, implemented similar to [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag): these ensure pages are search-engine-fiendly and provide social media websites with links which are displayed when links are shared,
 
 # Design and maintainability
 
