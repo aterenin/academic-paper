@@ -44,13 +44,22 @@
                     {% endfor %}
                 </div>
                 <h2>
-                    <a href="{{ this.extra.venue.url | default(value = this.extra.paper) | safe }}">
-                        <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">
-                            {{- this.extra.venue.name -}}
-                        </span></span>{% if this.extra.venue.date or this.date %}&nbsp;<time datetime="{{ this.extra.venue.date | default(value = this.date) | date(format='%+') }}" itemprop="datePublished">
-                            {{- this.extra.venue.date | default(value = this.date) | date(format='%Y') -}}
-                        </time>{% endif %}
+                    {% if this.extra.venue.url %}
+                    <a href="{{ this.extra.venue.url | default(value = this.path ~ '#') | safe }}">
+                    {% endif %}
+                    <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical">
+                        <span itemprop="name">
+                            {{- this.extra.venue.name -}},
+                        </span>
+                    </span>
+                    {% if this.extra.venue.date or this.date %}
+                        <time datetime="{{ this.extra.venue.date | default(value = this.date) | date(format='%+') }}" itemprop="datePublished">
+                            {{- this.extra.venue.date | default(value = this.date) | date(format='%B %Y') -}}
+                        </time>
+                    {% endif %}
+                    {% if this.extra.venue.url %}
                     </a>
+                    {% endif %}
                 </h2>
             </header>
         
