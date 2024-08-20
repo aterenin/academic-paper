@@ -1,4 +1,4 @@
-base_url = "https://aterenin.github.io/academic-paper"
+base_url = "https://websites.umich.edu/~lmarques"
 compile_sass = true
 build_search_index = false
 generate_feeds = false

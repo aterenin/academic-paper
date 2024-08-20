@@ -9,5 +9,5 @@ demo = "https://aterenin.github.io/academic-paper"
 footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)."
 
 [author]
-name = "Alexander Terein"
+name = "Alexander Terenin"
 homepage = "https://avt.im"
