@@ -1,4 +1,4 @@
-base_url = "https://aterenin.github.io/academic-paper"
+base_url = "https://websites.umich.edu/~lmarques"
 compile_sass = true
 build_search_index = false
 generate_feeds = false
@@ -14,4 +14,3 @@ favicon = false
 large_card = true
 footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)."
 server_side_katex = true
-base_author = "Alexander Terenin"
