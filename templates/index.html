@@ -12,9 +12,13 @@
                 <h2>
                     <span itemprop="author">
                         {% for author in this.extra.authors %}
+                            {% if author.name == config.extra.base_author %}
+                                <a href="{{ config.base_url | safe }}">{{ config.extra.base_author }}</a>
+                            {% else %}
                             <a href="{{ author.url | default(value = this.path ~ '#') | safe }}">
                                 {{- author.name -}}
                             </a>
+                            {% endif %}
                             {%- if not loop.last -%}
                                 &comma;
                             {%- endif -%}

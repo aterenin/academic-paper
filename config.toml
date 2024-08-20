@@ -14,3 +14,4 @@ favicon = false
 large_card = true
 footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)."
 server_side_katex = true
+base_author = "Alexander Terenin"
