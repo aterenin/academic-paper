@@ -44,7 +44,8 @@
                     {% endfor %}
                 </div>
                 <h2>
-                    <a href="{{ this.extra.venue.url | default(value = this.extra.paper) | safe }}">
+                    {% set paper_button = this.extra.buttons | filter(attribute = 'name', value = 'Paper') | first %}
+                    <a href="{{ this.extra.venue.url | default(value = paper_button.url | default(value = this.path ~ '#')) | safe }}">
                         <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">
                             {{- this.extra.venue.name -}}
                         </span></span>{% if this.extra.venue.date or this.date %}&nbsp;<time datetime="{{ this.extra.venue.date | default(value = this.date) | date(format='%+') }}" itemprop="datePublished">
