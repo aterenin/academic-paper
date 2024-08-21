@@ -1,6 +1,6 @@
 # Academic Paper: a Zola theme
 
-[Academic Paper](https://aterenin.github.io/academic-paper) is a Zola theme desgned for hosting a website for scientific communication of an academic paper in the style of a blog post. 
+[Academic Paper](https://aterenin.github.io/academic-paper) is a Zola theme designed for hosting a website for scientific communication of an academic paper in the style of a blog post. 
 A demo website built with Academic Paper can be found at [aterenin.github.io/academic-paper](https://aterenin.github.io/academic-paper), and an example repository using this theme can be found at [github.com/aterenin/papers.avt.im](https://github.com/aterenin/papers.avt.im), with links to the pages in this repository found at [avt.im/archive?papers](https://avt.im/archive?papers).
 
 # Features
@@ -35,6 +35,7 @@ minify_html = true # to ensure correct rendering due to minification of whitespa
 [markdown]
 highlight_code = true # should be set to true unless the page has no code to highlight
 highlight_theme = "css" # this theme includes its own CSS-based styling of highlighting, so this should be set to CSS
+# other Markdown options - as described in the Zola documentation - go here, and set according to user preference
 
 [extra]
 footer_text = "This website is built using [Zola](https://www.getzola.org) and the [Academic Paper](http://github.com/aterenin/academic-paper/) theme, which is [designed to last](https://jeffhuang.com/designed_to_last/)." # by default this page adds a small and non-intrusive footer with some text linking to this repository - you can set this to false to remove the footer if you prefer
