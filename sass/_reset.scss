@@ -47,6 +47,12 @@ p {
     hyphens: auto;
 }
 
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
 input, button, textarea, select {
     font: inherit;
 }
