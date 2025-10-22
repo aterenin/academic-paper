@@ -24,9 +24,9 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Download Zola
-        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.19.2/zola-v0.19.2-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
+        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
       - name: Verify Zola binary
-        run: echo "983176bbf18837bebddb2e4b4b6cdfd792342355d2eb23bef66ff336d50ccc9d  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
+        run: echo "a070b4d6e85dad9c8b821bcd985dd2f07e807f699c881971a73d986fb92f5f7d  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
       - name: Build website
         run: zola build
       - name: Check for server side KaTeX
