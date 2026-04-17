@@ -5,7 +5,7 @@ const katex = require('katex');
 function renderFile(p) {
     const t = fs.readFileSync(p, {encoding: 'utf8', flag: 'r'});
     const u = t.replaceAll(/<code>\$([^\$]*)\$<\/code>/g, (_, m) => katex.renderToString(m.replaceAll('&lt;','<').replaceAll('&gt;','>')));
-    const v = u.replaceAll(/<pre class=z-code><code><span class="z-text z-plain">\s*\$\$([^\$]*)\$\$\s*<\/span><\/code><\/pre>/g, (_, m) => '<p>' + katex.renderToString(m.replaceAll('<span class="z-text z-plain">', '').replaceAll('</span>', '').replaceAll('&lt;','<').replaceAll('&gt;','>'), {displayMode: true}) + '</p>');
+    const v = u.replaceAll(/<pre[^>]*><code[^>]*>(?:<span[^>]*>)*\s*\$\$([^\$]*)\$\$\s*(?:<\/span>)*<\/code><\/pre>/g, (_, m) => '<p>' + katex.renderToString(m.replaceAll(/<\/?span[^>]*>/g, '').replaceAll('&lt;','<').replaceAll('&gt;','>'), {displayMode: true}) + '</p>');
     fs.writeFileSync(p, v);
 }
 

@@ -21,7 +21,7 @@
         @if $color-border-dark { --color-border: #{$color-border-dark}; }
         @if $color-selection-dark { --color-selection: #{$color-selection-dark}; }
     }
-    .dark-invert, pre.z-code code {
+    .dark-invert {
         filter: invert(90%) hue-rotate(180deg) sepia(10%);
     }
     img:not(.dark-invert) {

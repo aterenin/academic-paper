@@ -33,8 +33,9 @@ generate_feed = false # not used by the theme
 minify_html = true # to ensure correct rendering due to minification of whitespace, should be set to true, unless there is a reason to override it
 
 [markdown]
-highlight_code = true # should be set to true unless the page has no code to highlight
-highlight_theme = "css" # this theme includes its own CSS-based styling of highlighting, so this should be set to CSS
+bottom_footnotes = true # should be set to true to ensure correct footnote formatting
+highlighting.light_theme = "github-light" # this changes the syntax highlighting theme in light mode
+highlighting.dark_theme = "github-dark" # this changes the syntax highlighting theme in dark mode
 # other Markdown options - as described in the Zola documentation - go here, and set according to user preference
 
 [extra]
