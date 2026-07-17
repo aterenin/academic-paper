@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: 'recursive'
       - name: Download Zola
@@ -32,7 +32,7 @@ jobs:
       - name: Check for server side KaTeX
         run: grep -c "server_side_katex\s*=\s*true" config.toml | sed s/1/SERVER_SIDE_KATEX=true/ | sed s/0/SERVER_SIDE_KATEX=false/ >> $GITHUB_ENV
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Install KaTeX
         run: npm install katex
@@ -47,7 +47,7 @@ jobs:
         run: cp node_modules/katex/dist/katex.min.css public; cp -r node_modules/katex/dist/fonts public/fonts
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
           name: github-pages
@@ -61,4 +61,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
