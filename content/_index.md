@@ -27,7 +27,7 @@ This theme is designed for hosting a blog-post-style website to facilitate scien
 * A header with title, author, publication venue, year, and optional buttons for the paper, PDF download link, code, poster, and video.
 * Syntax highlighting via Zola, with a minimal CSS-based color theme.
 * Math rendering via KaTeX, compatible with both client-side and server-side rendering when configured appropriately.
-* Figures via a `figure(alt='Image alt text',src='path/to/image.png')` Zola shortcode, with support for optional captions, subfigures with optional subcaptions, implemented in responsive manner via flexbox.
+* Figures via a {% raw %}`{{ <figure alt={['Image alt text']} src={['path/to/image.png']} /> }}`{% endraw %} Zola component, with support for optional captions, subfigures with optional subcaptions, implemented in responsive manner via flexbox.
 * Markdown footnotes via Zola.
 * Twitter Summary Card, OpenGraph, and JSON-LD metadata, to ensure the web pages produced are search-engine-friendly, and provide social media websites with a banner image link they can display when the website is shared on social media, with an implementation very similar to [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag).
 

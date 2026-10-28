@@ -3,5 +3,5 @@
 {% else %}
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" as="style" onload="this.rel='stylesheet';">
     <script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
-    <script>window.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll('code').forEach(e=>{let t=e.innerText;if(t.startsWith('$$')&&t.endsWith('$$')){let z=e.parentNode;let p=document.createElement('p');katex.render(t.slice(2,-2),p,{displayMode:true});z.parentNode.replaceChild(p,z);}else if(t.startsWith('$')&&t.endsWith('$')){let s = document.createElement('span');katex.render(t.slice(1,-1),s);e.parentNode.replaceChild(s,e);}});});</script>
+    <script>window.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll('code').forEach(e=>{if(!e.dataset.lang||e.dataset.lang==='plain'){let t=e.innerText;if(t.startsWith('$$')&&t.endsWith('$$')){let z=e.parentNode;let p=document.createElement('p');katex.render(t.slice(2,-2),p,{displayMode:true});z.parentNode.replaceChild(p,z);}else if(t.startsWith('$')&&t.endsWith('$')){let s = document.createElement('span');katex.render(t.slice(1,-1),s);e.parentNode.replaceChild(s,e);}}});});</script>
 {% endif %}

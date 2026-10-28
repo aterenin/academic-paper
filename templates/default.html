@@ -1,5 +1,3 @@
-{% import "macros/seo.html" as seo %}
-
 {% set this = page | default(value = section) %}
 
 <!DOCTYPE html>
@@ -20,7 +18,7 @@
 
         <title>{{ this.title }}</title>
 
-        {{ seo::seo(page = this) }}
+        {{ <seo page={this} /> }}
 
         {% block head_includes %}{% endblock head_includes %}
         {% if this.extra.head_includes %}{{ this.extra.head_includes | safe }}{% endif %}

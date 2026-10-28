@@ -1,0 +1,32 @@
+{% component figure(src: array, alt = [], dark_invert = [], subcaption = [], source_attributes = [], @page = none, @section = none) -%}
+{%- set this = page or section %}
+<figure>
+{%- if src | length > 1 %}
+    <div>
+{%- endif %}
+{%- for item in src %}
+    {%- if src | length > 1 %}
+        <figure>
+    {%- endif %}
+    {%- if item is ending_with(pat = '.mp4') %}
+        <video {% if dark_invert | nth(n = loop.index0) %}class="dark-invert" {% endif %}{{ (source_attributes | nth(n = loop.index0)) or 'controls' }}>
+        <source src="{{ get_url(path = this.path ~ item) | safe }}" type="video/mp4">
+        </video>
+    {%- else %}
+        <img {% if dark_invert | nth(n = loop.index0) %}class="dark-invert" {% endif %}alt="{{ alt | nth(n = loop.index0) }}" src="{{ get_url(path = this.path ~ item) | safe }}" loading="lazy">
+    {%- endif %}
+    {%- if subcaption %}
+        <figcaption>{{ subcaption | nth(n = loop.index0) | markdown(inline = true) | safe }}</figcaption>
+    {%- endif %}
+    {%- if src | length > 1 %}
+        </figure>
+    {%- endif %}
+{%- endfor %}
+{%- if src | length > 1 %}
+    </div>
+{%- endif %}
+{%- if body %}
+    <figcaption>{{ body | markdown(inline = true) | safe }}</figcaption>
+{%- endif %}
+</figure>
+{%- endcomponent figure %}

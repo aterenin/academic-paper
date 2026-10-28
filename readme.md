@@ -9,7 +9,7 @@ A demo website built with Academic Paper can be found at [aterenin.github.io/aca
 
 * An automatic header which lists the title, author, venue, year, and along with customizable buttons.
 * Syntax highlighting and math rendering via KaTeX which can be done both client-side and server-side with appropriate configuration.
-* Figures via a Zola shortcode `figure(alt=['Image alt text'],src=['path/to/image.png'])`, which supports captions, subfigures, subcaptions, and is rendered using responsive flexbox.
+* Figures via a Zola component `{{ <figure alt={['Image alt text']} src={['path/to/image.png']} /> }}`, which supports captions, subfigures, subcaptions, and is rendered using responsive flexbox.
 * Markdown footnotes via Zola's footnote support.
 * Metadata including Twitter Summary Card, OpenGraph, and JSON-LD, implemented similar to [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag): these ensure pages are search-engine-fiendly and provide social media websites with links which are displayed when links are shared,
 
@@ -23,7 +23,7 @@ As consequence, the theme has no JavaScript or CSS dependencies if KaTeX is used
 
 The examples below document the theme's options which are available in the TOML files, which are listed as comments within each file.
 
-## Config.toml 
+## Zola.toml 
 
 ```toml
 base_url = "https://example.com"
@@ -63,7 +63,7 @@ buttons = [ # this theme supports any set of buttons, but and will by default in
     {name="Video", url = "https://example.com"},
     {name="Slides", url = "https://example.com"},
     {name="Poster", url = "https://example.com"},
-    {name="Your custom button", url = "https://example.com"}, # to add an icon, add it as an include, and override the macro icons.html
+    {name="Your custom button", url = "https://example.com"}, # to add an icon, add it as an include, and override the component icon.html
 ]
 katex = true # to enable math via katex - whether using server-side or client-side rendering - set katex to true
 favicon = false # set to true to use favicon.ico as the page's favicon

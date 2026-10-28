@@ -24,13 +24,13 @@ jobs:
         with:
           submodules: 'recursive'
       - name: Download Zola
-        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
+        run: curl -fLsS "https://github.com/getzola/zola/releases/download/v0.23.6/zola-v0.23.6-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
       - name: Verify Zola binary
-        run: echo "45de6b2559aba4df42199dc6b0161acb914d37be4ccaa03297cd4a26c8e14042  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
+        run: echo "d8f9573b7548bb46946455a6543ef9f180fa37505ecd3d5e7715a70742d9bbf9  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
       - name: Build website
         run: zola build
       - name: Check for server side KaTeX
-        run: grep -c "server_side_katex\s*=\s*true" config.toml | sed s/1/SERVER_SIDE_KATEX=true/ | sed s/0/SERVER_SIDE_KATEX=false/ >> $GITHUB_ENV
+        run: grep -c "server_side_katex\s*=\s*true" zola.toml | sed s/1/SERVER_SIDE_KATEX=true/ | sed s/0/SERVER_SIDE_KATEX=false/ >> $GITHUB_ENV
       - name: Setup Node
         uses: actions/setup-node@v6
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}

@@ -1,5 +1,3 @@
-{% import "macros/icons.html" as icons %}
-
 {% extends "default.html" %}
 
 {% block main %}
@@ -36,7 +34,7 @@
                     {% for button in this.extra.buttons %}
                         <a class="btn" href="{{ button.url | safe }}">
                             {% if not button.no_icon %}
-                                {{- icons::icon(name = button.name | lower) -}}
+                                {{- <icon name={button.name | lower} /> -}}
                                 &nbsp;
                             {% endif %}
                             {{- button.name -}}
@@ -44,12 +42,12 @@
                     {% endfor %}
                 </div>
                 <h2>
-                    {% set paper_button = this.extra.buttons | filter(attribute = 'name', value = 'Paper') | first %}
-                    <a href="{{ this.extra.venue.url | default(value = paper_button.url | default(value = this.path ~ '#')) | safe }}">
+                    {% set paper_button = [button for button in this.extra.buttons if button.name == 'Paper'] | first %}
+                    <a href="{{ (this.extra.venue.url or paper_button?.url or (this.path ~ '#')) | safe }}">
                         <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">
                             {{- this.extra.venue.name -}}
-                        </span></span>{% if this.extra.venue.date or this.date %}&nbsp;<time datetime="{{ this.extra.venue.date | default(value = this.date) | date(format='%+') }}" itemprop="datePublished">
-                            {{- this.extra.venue.date | default(value = this.date) | date(format='%Y') -}}
+                        </span></span>{% if this.extra.venue.date or this.date %}&nbsp;<time datetime="{{ (this.extra.venue.date or this.date) | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" itemprop="datePublished">
+                            {{- (this.extra.venue.date or this.date) | date(format='%Y') -}}
                         </time>{% endif %}
                     </a>
                 </h2>
