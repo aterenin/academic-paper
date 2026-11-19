@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const katex = require('katex');
+import fs from 'fs';
+import path from 'path';
+import katex from 'katex';
 
 function renderFile(p) {
     const t = fs.readFileSync(p, {encoding: 'utf8', flag: 'r'});
     const u = t.replaceAll(/<code>\$([^\$]*)\$<\/code>/g, (_, m) => katex.renderToString(m.replaceAll('&lt;','<').replaceAll('&gt;','>')));
-    const v = u.replaceAll(/<pre[^>]*><code(?: data-lang="?plain"?)?>(?:<span[^>]*>)*\s*\$\$([^\$]*)\$\$\s*(?:<\/span>)*<\/code><\/pre>/g, (_, m) => '<p>' + katex.renderToString(m.replaceAll(/<\/?span[^>]*>/g, '').replaceAll('&lt;','<').replaceAll('&gt;','>'), {displayMode: true}) + '</p>');
+    const v = u.replaceAll(/<pre[^>]*><code(?: data-lang="?plain"?)?>(?:<span[^>]*>)*\s*\$\$([^\$]*)\$\$\s*(?:<\/span>)*<\/code><\/pre>(?:\s*<p>)?/g, (_, m) => katex.renderToString(m.replaceAll(/<\/?span[^>]*>/g, '').replaceAll('&lt;','<').replaceAll('&gt;','>'), {displayMode: true}));
     fs.writeFileSync(p, v);
 }
 

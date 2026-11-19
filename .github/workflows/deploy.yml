@@ -41,7 +41,7 @@ jobs:
         run: if [ -d scripts ]; then echo "KATEX_SCRIPT_DIR=scripts"; else echo "KATEX_SCRIPT_DIR=themes/academic-paper/scripts"; fi >> $GITHUB_ENV
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Render KaTeX
-        run: node $KATEX_SCRIPT_DIR/katex.js
+        run: node $KATEX_SCRIPT_DIR/katex.mjs
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Copy KaTeX CSS and fonts
         run: cp node_modules/katex/dist/katex.min.css public; cp -r node_modules/katex/dist/fonts public/fonts
