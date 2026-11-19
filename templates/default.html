@@ -14,7 +14,7 @@
             <link rel="apple-touch-icon" href="{{ get_url(path = 'apple-touch-icon.png') }}" type="image/png">
         {% endif %}
 
-        {% if this.extra.katex %}{% include "includes/katex.html" %}{% endif %}
+        {% if this.content is matching(pat = '<pre[^>]*><code(?: data-lang="?plain"?)?>(?:<span[^>]*>)*\\s*\\$\\$(?:\\\\\\$|[^\\$])*\\$\\$\\s*(?:</span>)*</code></pre>|<code>\\$(?:\\\\\\$|[^\\$])*\\$</code>') %}{% include "includes/katex.html" %}{% endif %}
 
         <title>{{ this.title }}</title>
 

@@ -12,7 +12,6 @@ buttons = [
     {name = "Poster", url = "https://aterenin.github.io/academic-paper"},
     {name = "Video", url = "https://aterenin.github.io/academic-paper"},
 ]
-katex = true
 large_card = false
 favicon = false
 +++
