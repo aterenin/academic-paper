@@ -29,22 +29,23 @@ jobs:
         run: echo "d8f9573b7548bb46946455a6543ef9f180fa37505ecd3d5e7715a70742d9bbf9  /usr/local/bin/zola" | shasum -a 256 -b -c --strict
       - name: Build website
         run: zola build
+      - name: Look up theme name
+        run: echo "ZOLA_THEME=$(sed -n 's/^theme *= *"\(.*\)"/\1/p' zola.toml)" >> $GITHUB_ENV
+      - name: Find script directory
+        run: if [ -d scripts ]; then echo "SCRIPT_DIR=scripts"; else echo "SCRIPT_DIR=themes/$ZOLA_THEME/scripts"; fi >> $GITHUB_ENV
       - name: Check for server side KaTeX
         run: grep -c "server_side_katex\s*=\s*true" zola.toml | sed s/1/SERVER_SIDE_KATEX=true/ | sed s/0/SERVER_SIDE_KATEX=false/ >> $GITHUB_ENV
       - name: Setup Node
         uses: actions/setup-node@v6
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Install KaTeX
-        run: npm install katex
-        if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
-      - name: Find KaTeX script directory
-        run: if [ -d scripts ]; then echo "KATEX_SCRIPT_DIR=scripts"; else echo "KATEX_SCRIPT_DIR=themes/academic-paper/scripts"; fi >> $GITHUB_ENV
+        run: npm install --ignore-scripts --before="$(date -d '14 days ago' -Iseconds)" katex
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Render KaTeX
-        run: node $KATEX_SCRIPT_DIR/katex.mjs
+        run: node $SCRIPT_DIR/katex.mjs
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Copy KaTeX CSS and fonts
-        run: cp node_modules/katex/dist/katex.min.css public; cp -r node_modules/katex/dist/fonts public/fonts
+        run: cp node_modules/katex/dist/katex.min.css public; mkdir -p public/fonts; cp node_modules/katex/dist/fonts/* public/fonts/
         if: ${{ env.SERVER_SIDE_KATEX == 'true' }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
