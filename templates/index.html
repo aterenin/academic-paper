@@ -10,7 +10,7 @@
                 <h2>
                     <span itemprop="author">
                         {% for author in this.extra.authors %}
-                            <a href="{{ author.url | default(value = this.path ~ '#') | safe }}">
+                            <a href="{{ author.url | default(value = get_url(path = this.path, trailing_slash = true) ~ '#') | safe }}">
                                 {{- author.name -}}
                             </a>
                             {%- if not loop.last -%}
@@ -43,7 +43,7 @@
                 </div>
                 <h2>
                     {% set paper_button = [button for button in this.extra.buttons if button.name == 'Paper'] | first %}
-                    <a href="{{ (this.extra.venue.url or paper_button?.url or (this.path ~ '#')) | safe }}">
+                    <a href="{{ (this.extra.venue.url or paper_button?.url or (get_url(path = this.path, trailing_slash = true) ~ '#')) | safe }}">
                         <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">
                             {{- this.extra.venue.name -}}
                         </span></span>{% if this.extra.venue.date or this.date %}&nbsp;<time datetime="{{ (this.extra.venue.date or this.date) | date(format='%Y-%m-%dT%H:%M:%S%:z') }}" itemprop="datePublished">
